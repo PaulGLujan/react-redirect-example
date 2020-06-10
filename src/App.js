@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Routes from './Routes';
+import Redirect from './Redirect';
 
 function App() {
     return (
@@ -16,7 +16,18 @@ function App() {
                     <Link to="/adopted">Adopted Pets</Link>
                 </h3>
             </header>
-            <Routes />
+            <Switch>
+                <Route exact path="/">
+                    <h1>Home</h1>
+                </Route>
+                <Route path="/available">
+                    <h1>Available Pets</h1>
+                </Route>
+                <Route path="/adopted">
+                    <h1>Adopted Pets</h1>
+                </Route>
+                <Route path="/forms" component={Redirect} />
+            </Switch>
         </Router>
     );
 }
